@@ -45,7 +45,10 @@ describe('Render ', function() {
         it('validates', function(done) {
             var count = 0;
             tileCoords.forEach(function(coords,idx,array) {
-                source.getGrid(coords[0], coords[1], coords[2], function(err, info, headers) {
+                source.getGrid(coords[0], coords[1], coords[2], function(err, info, headers, stats) {
+                    assert.ok(stats);
+                    assert.ok(stats.hasOwnProperty('render'));
+                    assert.ok(stats.hasOwnProperty('encode'));
                     var key = coords[0] + '_' + coords[1] + '_' + coords[2];
                     completion['grid_' + key] = true;
                     if (err) throw err;

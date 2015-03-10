@@ -10,7 +10,10 @@ describe('Render ', function() {
             if (err) throw err;
             assert.equal(source._info.format,undefined); // so will default to png in getTile
             source._info.format = 'jpeg:quality=20';
-            source.getTile(0,0,0, function(err, tile, headers) {
+            source.getTile(0,0,0, function(err, tile, headers, stats) {
+                assert.ok(stats);
+                assert.ok(stats.hasOwnProperty('render'));
+                assert.ok(stats.hasOwnProperty('encode'));
                 assert.imageEqualsFile(tile, 'test/fixture/tiles/world-jpeg20.jpeg', 0.05, 'jpeg:quality=20', function(err, similarity) {
                     if (err) throw err;
                     assert.deepEqual(headers, {
@@ -47,12 +50,12 @@ describe('Render ', function() {
         [2, 3, 2],
         [2, 3, 3]
     ];
-    
+
     var tileCoordsCompletion = {};
     tileCoords.forEach(function(coords) {
         tileCoordsCompletion['tile_' + coords[0] + '_' + coords[1] + '_' + coords[2]] = true;
     });
-  
+
     describe('getTile() ', function() {
         var source;
         var completion = {};
@@ -89,7 +92,7 @@ describe('Render ', function() {
             });
         });
     });
-  
+
     describe('getTile() with XML string', function() {
         var source;
         var completion = {};
