@@ -1,5 +1,9 @@
 # tilelive-mapnik changelog
 
+## 0.6.x
+
+* Support zoom > 30
+
 ## 0.6.18
 
 * Upgraded to generic-pool@2.4.x
