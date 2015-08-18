@@ -1,8 +1,9 @@
 # tilelive-mapnik changelog
 
-## 0.6.x
+## 0.6.x-cdb
 
 * Support zoom > 30
+* Exposes LockingCache configuration to adjust ttl and expire policy
 
 ## 0.6.18
 
