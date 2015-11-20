@@ -49,6 +49,7 @@ describe('Render ', function() {
             var count = 0;
             tileCoords.forEach(function(coords,idx,array) {
                 source.getGrid(coords[0], coords[1], coords[2], function(err, info, headers, stats) {
+                    assert.equal(Object.keys(source.solidCache).length, 0);
                     assert.ok(stats);
                     assert.ok(stats.hasOwnProperty('render'));
                     assert.ok(stats.hasOwnProperty('encode'));
