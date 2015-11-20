@@ -90,6 +90,7 @@ describe('Render ', function() {
                 source.getTile(coords[0], coords[1], coords[2],
                    function(err, tile, headers) {
                       if (err) throw err;
+                      assert.ok(Object.keys(source.solidCache).length > 0);
                       var key = coords[0] + '_' + coords[1] + '_' + coords[2];
                       assert.imageEqualsFile(tile, 'test/fixture/tiles/transparent_' + key + '.png', function(err, similarity) {
                           completion['tile_' + key] = true;
