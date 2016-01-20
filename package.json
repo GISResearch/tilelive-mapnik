@@ -21,7 +21,7 @@
     "dependencies": {
         "step"        : "~0.0.5",
         "generic-pool": "~2.1.1",
-        "mapnik":       "3.0.9",
+        "mapnik":       "3.4.14",
         "mime"        : "~1.2.11",
         "sphericalmercator": "~1.0.2"
     },
