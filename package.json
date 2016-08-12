@@ -1,6 +1,6 @@
 {
     "name"          : "tilelive-mapnik",
-    "version"       : "0.6.15-cdb8",
+    "version"       : "0.6.15-cdb9",
     "main"          : "./lib/mapnik_backend.js",
     "description"   : "Mapnik backend for tilelive",
     "url"           : "http://github.com/mapbox/tilelive-mapnik",
@@ -21,7 +21,7 @@
     "dependencies": {
         "step"        : "~0.0.5",
         "generic-pool": "~2.1.1",
-        "mapnik":       "cartodb/node-mapnik#1.4.15-cdb8",
+        "mapnik":       "https://s3.amazonaws.com/cartodb-node-binary/mapnik/v1.4.15-cdb10/1.4.15-cdb10.tgz",
         "mime"        : "~1.2.11",
         "sphericalmercator": "~1.0.2"
     },
