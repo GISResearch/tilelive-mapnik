@@ -26,12 +26,12 @@ describe('Render ', function() {
         [2, 3, 2],
         [2, 3, 3]
     ];
-    
+
     var tileCoordsCompletion = {};
     tileCoords.forEach(function(coords) {
         tileCoordsCompletion['grid_' + coords[0] + '_' + coords[1] + '_' + coords[2]] = true;
     });
-  
+
     describe('getGrid() ', function() {
         var source;
         var completion = {};
