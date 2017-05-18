@@ -154,4 +154,59 @@ describe('Render ', function() {
             });
         });
     });
+
+    describe('getTile() with XML string and buffer-size', function() {
+        var tileCompletion = {};
+        var tiles = [[1, 0, 0], [2, 1, 1]];
+        tiles.forEach(function (coords) {
+            tileCompletion['tile_buffer_size_' + coords[0] + '_' + coords[1] + '_' + coords[2]] = true;
+        });
+
+        var source;
+        var completion = {};
+        before(function(done) {
+            var xml = fs.readFileSync('./test/data/world_labels.xml', 'utf8');
+            new mapnik_backend({
+                protocol: 'mapnik:',
+                pathname: './test/data/world_labels.xml',
+                search: '?' + Date.now(), // prevents caching
+                xml: xml,
+                query: {
+                    bufferSize: 0
+                }} , function(err, s) {
+                    if (err) throw err;
+                    source = s;
+                    done();
+            });
+        })
+        it('validates buffer-size', function(done) {
+            var count = 0;
+            tiles.forEach(function (coords, idx, array) {
+                source._info.format = 'png32';
+                source.getTile(coords[0], coords[1], coords[2],
+                   function(err, tile, headers) {
+                      if (err) throw err;
+                      var key = coords[0] + '_' + coords[1] + '_' + coords[2];
+                      var filepath = 'test/fixture/tiles/buffer_size_' + key + '.png';
+                      var resultImage = new mapnik_backend.mapnik.Image.fromBytesSync(tile);
+                      resultImage.save(filepath);
+                      assert.imageEqualsFile(tile, filepath, function(err, similarity) {
+                          completion['tile_buffer_size_' + key] = true;
+                          if (err) throw err;
+                          assert.deepEqual(headers, {
+                              "Content-Type": "image/png"
+                          });
+                          ++count;
+                          if (count == array.length) {
+
+                              assert.deepEqual(completion,tileCompletion);
+                              source.close(function(err){
+                                    done(err);
+                              });
+                          }
+                      });
+                });
+            });
+        });
+    });
 });
