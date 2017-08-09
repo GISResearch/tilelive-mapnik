@@ -1,6 +1,6 @@
 # tilelive-mapnik changelog
 
-## 0.6.18-cdb3 (not realesed)
+## 0.6.18-cdb3
 
 * Be able to configure tile timeout.
 
