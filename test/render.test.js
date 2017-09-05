@@ -210,3 +210,28 @@ describe('Render ', function() {
         });
     });
 });
+
+
+describe('getTile() metrics', function() {
+
+    it('Gets metrics', function(done) {
+        var uri = {
+            protocol : "mapnik:",
+            pathname : "./test/data/world.xml",
+            query : {
+                metrics : true
+            }
+        };
+
+        new mapnik_backend(uri, function(err, source) {
+            if (err) throw err;
+            source.getTile(0, 0, 0, function(err, info, headers, stats) {
+                assert(!err);
+                assert.ok(stats.hasOwnProperty('Mapnik'));
+                source.close(function(err) {
+                    done();
+                });
+            });
+        });
+    });
+});

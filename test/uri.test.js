@@ -100,4 +100,34 @@ describe('uri query options', function() {
             });
         });
     });
+
+    describe('metrics', function() {
+
+        function makeUri(metrics) {
+            var query = {};
+            if (metrics !== undefined) {
+                query.metrics = metrics;
+            }
+
+            return { query };
+        }
+
+        it('Defaults to false', function() {
+            var uri = makeUri();
+            new mapnik_backend(uri, function(err) { assert(!err); });
+            assert(uri.query.metrics === false);
+        });
+
+        it('Set to false', function() {
+            var uri = makeUri(false);
+            new mapnik_backend(uri, function(err) { assert(!err); });
+            assert(uri.query.metrics === false);
+        });
+
+        it('Set to true', function() {
+            var uri = makeUri(true);
+            new mapnik_backend(uri, function(err) { assert(!err); });
+            assert(uri.query.metrics === true);
+        });
+    });
 });
