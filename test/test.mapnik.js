@@ -1,6 +1,6 @@
 var assert = require('assert');
 var mapnik_backend = require('..');
-var mapnik = require("mapnik");
+var mapnik = require('@carto/mapnik');
 
 describe('.mapnik', function() {
 
