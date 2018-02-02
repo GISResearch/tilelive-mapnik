@@ -25,20 +25,21 @@ describe('Timeout', function () {
             source.getTile(coords[0], coords[1], coords[2], function (err) {
                 assert.ok(err);
                 assert.equal('Render timed out', err.message);
-                done();
+                source.close(done);
             });
         });
     });
 
     it('should not fire timeout', function (done) {
-        var uri = Object.assign({ query: { limits: { render: 0 } } }, baseUri);
+        var uri = Object.assign({}, baseUri);
+        uri.query.limits.render = 0;
         new MapnikBackend(uri, function (err, source) {
             if (err) return done(err);
-            this.source.getTile(coords[0], coords[1], coords[2], function (err, tile, headers) {
+            source.getTile(coords[0], coords[1], coords[2], function (err, tile, headers) {
                 assert.ifError(err);
                 assert.ok(tile);
                 assert.ok(headers);
-                done();
+                source.close(done);
             });
         });
     });

@@ -22,7 +22,7 @@ describe('Info ', function() {
                 assert.equal(info.minzoom,expected.minzoom);
                 assert.equal(info.maxzoom,expected.maxzoom);
                 assert.deepEqual(info.center,expected.center);
-                done();
+                source.close(done);
             });
         });
     });
@@ -36,7 +36,7 @@ describe('Info ', function() {
             xml: xml
         }, function(err, source) {
             if (err) throw err;
-    
+
             source.getInfo(function(err, info) {
                 if (err) throw err;
                 var expected = {
@@ -52,7 +52,7 @@ describe('Info ', function() {
                 assert.equal(info.minzoom,expected.minzoom);
                 assert.equal(info.maxzoom,expected.maxzoom);
                 assert.deepEqual(info.center,expected.center);
-                done();
+                source.close(done);
             });
         });
     });
@@ -60,7 +60,7 @@ describe('Info ', function() {
     it('getInfo() with template', function(done) {
         new mapnik_backend('mapnik://./test/data/test.xml', function(err, source) {
             if (err) throw err;
-    
+
             source.getInfo(function(err, info) {
                 if (err) throw err;
                 var expected = {
@@ -76,7 +76,7 @@ describe('Info ', function() {
                 assert.equal(info.minzoom,expected.minzoom);
                 assert.equal(info.maxzoom,expected.maxzoom);
                 assert.deepEqual(info.center,expected.center);
-                done();
+                source.close(done);
             });
         });
     });
@@ -87,7 +87,7 @@ describe('Info ', function() {
             source.getInfo(function(err, info) {
                 if (err) throw err;
                 assert.equal(info.format,"jpeg45");
-                done();
+                source.close(done);
             });
         });
     });
@@ -97,7 +97,7 @@ describe('Info ', function() {
             if (err) throw err;
             assert.equal(source._autoLoadFonts,true);
             assert.equal(source._internal_cache,true);
-            done();
+            source.close(done);
         });
     });
 
@@ -106,7 +106,7 @@ describe('Info ', function() {
             if (err) throw err;
             assert.equal(source._autoLoadFonts,false);
             assert.equal(source._internal_cache,false);
-            done();
+            source.close(done);
         });
     });
 
@@ -124,7 +124,7 @@ describe('Info ', function() {
                 source = s;
                 assert.equal(source._autoLoadFonts,false);
                 assert.equal(source._internal_cache,false);
-                done();
+                source.close(done);
         });
     });
 

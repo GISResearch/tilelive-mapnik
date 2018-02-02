@@ -1,5 +1,9 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb5
+
+* Enable support to capture mapnik metrics (grid, image)
+
 ## 0.6.18-cdb4
 
 * Upgrade mapnik to @carto/mapnik ~3.6.2-carto.0
