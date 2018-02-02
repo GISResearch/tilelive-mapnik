@@ -14,9 +14,16 @@ describe('uri query options', function() {
         }
 
         var backend;
-
+        var source;
         before(function(done) {
-            backend = new mapnik_backend('mapnik://./test/data/test.xml', done);
+            backend = new mapnik_backend('mapnik://./test/data/test.xml', function(err, s) {
+                if (err) throw err;
+                source = s;
+                done();
+            });
+        });
+        after(function(done) {
+            source.close(done);
         });
 
         var scenarios = [

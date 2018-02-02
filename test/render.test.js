@@ -228,9 +228,7 @@ describe('getTile() metrics', function() {
             source.getTile(0, 0, 0, function(err, info, headers, stats) {
                 assert(!err);
                 assert.ok(stats.hasOwnProperty('Mapnik'));
-                source.close(function(err) {
-                    done();
-                });
+                source.close(done);
             });
         });
     });
