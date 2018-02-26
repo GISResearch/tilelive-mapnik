@@ -1,13 +1,20 @@
 {
-    "name"          : "tilelive-mapnik",
-    "version"       : "0.6.18-cdb6",
-    "main"          : "./lib/mapnik_backend.js",
-    "description"   : "Mapnik backend for tilelive",
-    "url"           : "http://github.com/mapbox/tilelive-mapnik",
-    "keywords"      : ["map", "server", "mapnik", "tms"],
-    "licenses"      : [{
-        "type": "BSD"
-    }],
+    "name": "tilelive-mapnik",
+    "version": "0.6.18-cdb6",
+    "main": "./lib/mapnik_backend.js",
+    "description": "Mapnik backend for tilelive",
+    "url": "https://github.com/Cartodb/tilelive-mapnik",
+    "keywords": [
+        "map",
+        "server",
+        "mapnik",
+        "tms"
+    ],
+    "licenses": [
+        {
+            "type": "BSD"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "http://github.com/mapbox/tilelive-mapnik.git"
@@ -20,10 +27,10 @@
         "Blake Thompson <flippmoke>"
     ],
     "dependencies": {
-        "step"         : "~0.0.5",
-        "generic-pool" : "~2.4.0",
         "@carto/mapnik": "~3.6.2-carto.0",
-        "mime"         : "~1.6.0"
+        "generic-pool": "~2.4.0",
+        "mime": "~1.6.0",
+        "step": "1.0.0"
     },
     "devDependencies": {
         "mocha": "*"

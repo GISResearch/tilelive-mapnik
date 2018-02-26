@@ -4,6 +4,7 @@
 
 * Remove unused module `sphericalmercator`
 * Point CI tags to our forks
+* Update step to `1.0.0`.
 
 ## 0.6.18-cdb5
 
