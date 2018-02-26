@@ -28,7 +28,7 @@
     ],
     "dependencies": {
         "@carto/mapnik": "3.6.2-carto.3",
-        "generic-pool": "~2.4.0",
+        "generic-pool": "2.5.4",
         "mime": "2.2.0",
         "step": "1.0.0"
     },

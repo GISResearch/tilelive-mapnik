@@ -7,6 +7,7 @@
 * Update step to `1.0.0`
 * Update @carto/mapnik to `3.6.2-carto.3`
 * Update mime to `2.2.0`
+* Update generic-pool to `2.5.4`
 
 ## 0.6.18-cdb5
 
