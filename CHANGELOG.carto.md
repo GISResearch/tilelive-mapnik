@@ -3,6 +3,7 @@
 ## 0.6.18-cdb6
 
 * Remove unused module `sphericalmercator`
+* Point CI tags to our forks
 
 ## 0.6.18-cdb5
 
