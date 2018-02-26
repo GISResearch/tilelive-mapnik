@@ -1,5 +1,9 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb6
+
+* Remove unused module `sphericalmercator`
+
 ## 0.6.18-cdb5
 
 * Enable support to capture mapnik metrics (grid, image)
