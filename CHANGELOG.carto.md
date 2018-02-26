@@ -4,7 +4,8 @@
 
 * Remove unused module `sphericalmercator`
 * Point CI tags to our forks
-* Update step to `1.0.0`.
+* Update step to `1.0.0`
+* Update @carto/mapnik to `3.6.2-carto.3`
 
 ## 0.6.18-cdb5
 
