@@ -1,5 +1,8 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb7
+* Revert module updates from 0.6.18-cdb6
+
 ## 0.6.18-cdb6
 
 * Remove unused module `sphericalmercator`
