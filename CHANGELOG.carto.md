@@ -1,5 +1,8 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb9
+* Set @carto/mapnik to [`3.6.2-carto.6`](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto/CHANGELOG.carto.md#362-carto6)
+
 ## 0.6.18-cdb8
 * Set @carto/mapnik to `3.6.2-carto.4`, which includes improvements for the cache for raster symbols. See the [changelog](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto/CHANGELOG.carto.md#362-carto4)
 
