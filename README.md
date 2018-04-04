@@ -9,7 +9,7 @@ grids from a Mapnik XML file. `tilelive-mapnik` implements the
 
 ## Installation
 
-    npm install tilelive-mapnik
+    yarn install tilelive-mapnik
 
 Though `tilelive` is not a dependency of `tilelive-mapnik` you will want to
 install it to actually make use of `tilelive-mapnik` through a reasonable
