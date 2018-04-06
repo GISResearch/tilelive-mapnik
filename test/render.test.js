@@ -209,6 +209,36 @@ describe('Render ', function() {
             });
         });
     });
+
+    var TESTCOLOR = [ '#A3D979', '#fffacd', '#082910' ];
+    describe('Works with render time variables', function() {
+        TESTCOLOR.forEach(function (custom_color) {
+
+            it('Color ' + custom_color, function(done) {
+                var uri = {
+                    protocol : "mapnik:",
+                    pathname : "./test/data/world_variable.xml",
+                    query : {
+                        variables : { "customColor" : custom_color }
+                    }
+                };
+
+                new mapnik_backend(uri, function(err, source) {
+                    if (err) throw err;
+                    source.getTile(2, 2, 2, function(err, tile, headers) {
+                        if (err) throw err;
+                        assert.imageEqualsFile(tile, 'test/fixture/tiles/transparent_2_2_2_' + custom_color + '.png', function(err, similarity) {
+                            if (err) throw err;
+                            assert.deepEqual(headers, {
+                                "Content-Type": "image/png"
+                            });
+                            source.close(done);
+                        });
+                    });
+                })
+            });
+        });
+    });
 });
 
 
