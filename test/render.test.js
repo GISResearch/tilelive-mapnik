@@ -239,6 +239,27 @@ describe('Render ', function() {
             });
         });
     });
+
+    it('Works with metatiles', function(done) {
+        var uri = {
+            protocol : "mapnik:",
+            pathname : "./test/data/world.xml",
+            metatile: 4,
+            query : {
+                metrics : true
+            }
+        };
+
+        new mapnik_backend(uri, function(err, source) {
+            if (err) throw err;
+            source.getTile(2, 2, 2, function(err, info, headers, stats) {
+                assert(!err);
+                assert.ok(stats.hasOwnProperty('Mapnik'));
+                source.close(done);
+            });
+        });
+    });
+
 });
 
 
