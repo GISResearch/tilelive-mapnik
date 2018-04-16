@@ -1,5 +1,8 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb12
+* Set @carto/mapnik to [`3.6.2-carto.8`](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto/CHANGELOG.carto.md#362-carto8)
+
 ## 0.6.18-cdb11
 * Add support for render time variables
 * Return Mapnik metrics with metatiles
