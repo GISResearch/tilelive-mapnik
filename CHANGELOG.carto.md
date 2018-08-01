@@ -3,7 +3,7 @@
 ## 0.6.18-cdb15
 * Update @carto/mapnik to [`3.6.2-carto.11`](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto.11/CHANGELOG.carto.md#362-carto11).
 * Dev: Set mocha dependency to `5.2.0`.
-* Update `generic-pool` to `3.4.2`.
+* Update `generic-pool` to `2.5.4`.
 * Remove `step` and calls to `nextTick`.
 * Remove unused `sphericalmercator`.
 
