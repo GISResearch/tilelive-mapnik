@@ -29,8 +29,7 @@
     "dependencies": {
         "@carto/mapnik": "3.6.2-carto.11",
         "generic-pool": "3.4.2",
-        "mime": "2.3.1",
-        "step": "~0.0.5"
+        "mime": "2.3.1"
     },
     "devDependencies": {
         "mocha": "5.2.0"
