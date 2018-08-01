@@ -34,9 +34,9 @@
         "sphericalmercator": "~1.0.4"
     },
     "devDependencies": {
-        "mocha": "*"
+        "mocha": "5.2.0"
     },
     "scripts": {
-        "test": "mocha -R spec --timeout 10000"
+        "test": "mocha -R spec --timeout 5000 --exit"
     }
 }
