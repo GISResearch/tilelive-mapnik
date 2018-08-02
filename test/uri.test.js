@@ -111,12 +111,17 @@ describe('uri query options', function() {
     describe('metrics', function() {
 
         function makeUri(metrics) {
-            var query = {};
+            const uri = {
+                protocol : "mapnik:",
+                pathname : "./test/data/test.xml",
+                query : { }
+            };
+
             if (metrics !== undefined) {
-                query.metrics = metrics;
+                uri.query.metrics = metrics;
             }
 
-            return { query };
+            return uri;
         }
 
         it('Defaults to false', function() {
