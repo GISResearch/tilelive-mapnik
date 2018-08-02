@@ -6,6 +6,7 @@
 * Update `generic-pool` to `2.5.4`.
 * Remove `step` and calls to `nextTick`.
 * Remove unused `sphericalmercator`.
+* Remove EventEmitter inheritance.
 
 ## 0.6.18-cdb14
 * Set @carto/mapnik to [`3.6.2-carto.10`](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto/CHANGELOG.carto.md#362-carto10)
