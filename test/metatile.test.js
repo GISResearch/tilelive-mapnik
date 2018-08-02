@@ -1,5 +1,5 @@
 var assert = require('assert');
-var render = require('../lib/render');
+var backend = require('../lib/mapnik_backend');
 
 var FULL = 20037508.342789244;
 var HALF = 0;
@@ -14,39 +14,39 @@ describe('metatile', function() {
             bbox: [ -FULL, -FULL, FULL, FULL ],
             x: 0, y: 0
         };
-        assert.deepEqual(render.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 1, tileSize: 256 }), tile);
-        assert.deepEqual(render.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
-        assert.deepEqual(render.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
-        assert.deepEqual(render.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
-        assert.deepEqual(render.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
+        assert.deepEqual(backend.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 1, tileSize: 256 }), tile);
+        assert.deepEqual(backend.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
+        assert.deepEqual(backend.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
+        assert.deepEqual(backend.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
+        assert.deepEqual(backend.calculateMetatile({ z: 0, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
         done();
     });
     
     it('test metatile calculation at z=1', function(done) {
         // metatile: 1
         {
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 1, tileSize: 256}), {
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 1, tileSize: 256}), {
                 width: 256,
                 height: 256,
                 tiles: [ [1, 0, 0] ],
                 bbox: [ -FULL, HALF, HALF, FULL ],
                 x: 0, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [1, 0, 1] ],
                 bbox: [ -FULL, -FULL, HALF, HALF ],
                 x: 0, y: 1
             });
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [1, 1, 0] ],
                 bbox: [ HALF, HALF, FULL, FULL ],
                 x: 1, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [1, 1, 1] ],
@@ -64,34 +64,34 @@ describe('metatile', function() {
         };
         // metatile: 2
         {
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 2, tileSize: 256 }), tile);
         }
     
         // metatile: 3
         {
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 3, tileSize: 256 }), tile);
         }
     
         // metatile: 4
         {
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 4, tileSize: 256 }), tile);
         }
     
         // metatile: 13
         {
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 0, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 1, x: 1, y: 1, metatile: 13, tileSize: 256 }), tile);
         }
         done();
     });
@@ -99,28 +99,28 @@ describe('metatile', function() {
     it('test metatile calculation at z=2', function(done) {
         // metatile: 1
         {
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 0, 0] ],
                 bbox: [ -FULL, QUAD, -QUAD, FULL ],
                 x: 0, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 0, 1] ],
                 bbox: [ -FULL, HALF, -QUAD, QUAD ],
                 x: 0, y: 1
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 0, 2] ],
                 bbox: [ -FULL, -QUADX, -QUAD, HALF ],
                 x: 0, y: 2
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 0, 3] ],
@@ -128,28 +128,28 @@ describe('metatile', function() {
                 x: 0, y: 3
             });
     
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 1, 0] ],
                 bbox: [ -QUAD, QUAD, HALF, FULL ],
                 x: 1, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 1, 1] ],
                 bbox: [ -QUAD, HALF, HALF, QUAD ],
                 x: 1, y: 1
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 1, 2] ],
                 bbox: [ -QUAD, -QUADX, HALF, HALF ],
                 x: 1, y: 2
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 1, 3] ],
@@ -157,28 +157,28 @@ describe('metatile', function() {
                 x: 1, y: 3
             });
     
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 2, 0] ],
                 bbox: [ HALF, QUAD, QUADX, FULL ],
                 x: 2, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 2, 1] ],
                 bbox: [ HALF, HALF, QUADX, QUAD ],
                 x: 2, y: 1
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 2, 2] ],
                 bbox: [ HALF, -QUADX, QUADX, HALF ],
                 x: 2, y: 2
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 2, 3] ],
@@ -186,28 +186,28 @@ describe('metatile', function() {
                 x: 2, y: 3
             });
     
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 3, 0] ],
                 bbox: [ QUADX, QUAD, FULL, FULL ],
                 x: 3, y: 0
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 3, 1] ],
                 bbox: [ QUADX, HALF, FULL, QUAD ],
                 x: 3, y: 1
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 3, 2] ],
                 bbox: [ QUADX, -QUADX, FULL, HALF ],
                 x: 3, y: 2
             });
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 1, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 1, tileSize: 256 }), {
                 width: 256,
                 height: 256,
                 tiles: [ [2, 3, 3] ],
@@ -224,10 +224,10 @@ describe('metatile', function() {
                 bbox: [ -FULL, HALF, -HALF, FULL ],
                 x: 0, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 2, tileSize: 256 }), tile);
     
             var tile = {
                 width: 512, height: 512,
@@ -235,10 +235,10 @@ describe('metatile', function() {
                 bbox: [ HALF, HALF, FULL, FULL ],
                 x: 2, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 2, tileSize: 256 }), tile);
     
             var tile = {
                 width: 512, height: 512,
@@ -246,10 +246,10 @@ describe('metatile', function() {
                 bbox: [ -FULL, -FULL, -HALF, HALF ],
                 x: 0, y: 2
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 2, tileSize: 256 }), tile);
     
     
             var tile = {
@@ -258,10 +258,10 @@ describe('metatile', function() {
                 bbox: [ HALF, -FULL, FULL, HALF ],
                 x: 2, y: 2
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 2, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 2, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 2, tileSize: 256 }), tile);
         }
     
         // metatile: 3
@@ -272,15 +272,15 @@ describe('metatile', function() {
                 bbox: [ -FULL, -QUADX, QUADX, FULL ],
                 x: 0, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 3, tileSize: 256 }), tile);
     
             var tile = {
                 width: 768, height: 256,
@@ -288,9 +288,9 @@ describe('metatile', function() {
                 bbox: [ -FULL, -FULL, QUADX, -QUADX ],
                 x: 0, y: 3
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 3, tileSize: 256 }), tile);
     
             var tile = {
                 width: 256, height: 768,
@@ -298,11 +298,11 @@ describe('metatile', function() {
                 bbox: [ QUADX, -QUADX, FULL, FULL ],
                 x: 3, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 3, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 3, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 3, tileSize: 256 }), tile);
     
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 3, tileSize: 256 }), {
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 3, tileSize: 256 }), {
                 width: 256, height: 256,
                 tiles: [ [2, 3, 3] ],
                 bbox: [ QUADX, -FULL, FULL, -QUADX ],
@@ -318,22 +318,22 @@ describe('metatile', function() {
                 bbox: [ -FULL, -FULL, FULL, FULL ],
                 x: 0, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 4, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 4, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 4, tileSize: 256 }), tile);
         }
     
         // metatile: 5
@@ -344,22 +344,22 @@ describe('metatile', function() {
                 bbox: [ -FULL, -FULL, FULL, FULL ],
                 x: 0, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 5, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 5, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 5, tileSize: 256 }), tile);
         }
     
         // metatile: 13
@@ -370,22 +370,22 @@ describe('metatile', function() {
                 bbox: [ -FULL, -FULL, FULL, FULL ],
                 x: 0, y: 0
             };
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 13, tileSize: 256 }), tile);
-            assert.deepEqual(render.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 2, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 0, y: 3, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 2, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 1, y: 3, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 2, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 2, y: 3, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 0, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 1, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 2, metatile: 13, tileSize: 256 }), tile);
+            assert.deepEqual(backend.calculateMetatile({ z: 2, x: 3, y: 3, metatile: 13, tileSize: 256 }), tile);
         }
             done();
     });
