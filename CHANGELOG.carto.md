@@ -1,5 +1,8 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb16
+* Make all modules to use strict mode semantics.
+
 ## 0.6.18-cdb15
 * Update @carto/mapnik to [`3.6.2-carto.11`](https://github.com/CartoDB/node-mapnik/blob/v3.6.2-carto.11/CHANGELOG.carto.md#362-carto11).
 * Dev: Set mocha dependency to `5.2.0`.
