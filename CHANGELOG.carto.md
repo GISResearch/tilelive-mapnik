@@ -1,5 +1,8 @@
 # tilelive-mapnik changelog
 
+## 0.6.18-cdb17
+
+
 ## 0.6.18-cdb16
 * Make all modules to use strict mode semantics.
 
