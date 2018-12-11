@@ -1,23 +1,21 @@
 {
-    "name": "tilelive-mapnik",
+    "name": "@younghappy/tilelive-mapnik",
     "version": "0.6.18-cdb17",
     "main": "./lib/mapnik_backend.js",
     "description": "Mapnik backend for tilelive",
-    "url": "http://github.com/mapbox/tilelive-mapnik",
+    "url": "http://github.com/GISResearch/tilelive-mapnik",
     "keywords": [
         "map",
         "server",
         "mapnik",
         "tms"
     ],
-    "licenses": [
-        {
-            "type": "BSD"
-        }
-    ],
+    "licenses": [{
+        "type": "BSD"
+    }],
     "repository": {
         "type": "git",
-        "url": "http://github.com/mapbox/tilelive-mapnik.git"
+        "url": "git+ssh://git@github.com/GISResearch/tilelive-mapnik.git"
     },
     "contributors": [
         "Tom MacWright <tmcw>",
@@ -36,5 +34,18 @@
     },
     "scripts": {
         "test": "mocha -R spec --timeout 5000 --exit"
+    },
+    "bugs": {
+        "url": "https://github.com/GISResearch/tilelive-mapnik/issues"
+    },
+    "homepage": "https://github.com/GISResearch/tilelive-mapnik#readme",
+    "directories": {
+        "lib": "lib",
+        "test": "test"
+    },
+    "author": "ConorPai",
+    "license": "ISC",
+    "publishConfig": {
+        "access": "public"
     }
 }
