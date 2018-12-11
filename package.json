@@ -43,7 +43,7 @@
         "lib": "lib",
         "test": "test"
     },
-    "author": "ConorPai",
+    "author": "younghappy",
     "license": "ISC",
     "publishConfig": {
         "access": "public"
